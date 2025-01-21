@@ -1,0 +1,31 @@
+<% layout('boilerplate') -%>
+<div class="container mt-5">
+    <h2 class="text-center">User Submission Form</h2>
+    <h1><%=msg%></h1>
+
+    <form action="/userdata" method="POST" enctype="multipart/form-data" class="shadow p-4 rounded">
+        <!-- Name Input -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <!-- Social Media Handle Input -->
+        <div class="mb-3">
+            <label for="socialMedia" class="form-label">Social Media Handle</label>
+            <input type="text" class="form-control" id="socialMedia" name="socialMedia" placeholder="Enter your social media handle (e.g., @username)">
+        </div>
+
+        <!-- File Input -->
+        <div class="mb-3">
+            <label for="images" class="form-label">Upload Images</label>
+            <input type="file" required class="form-control" id="images" name="images" accept="image/*" multiple>
+            <small class="form-text text-muted">You can upload multiple images.</small>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

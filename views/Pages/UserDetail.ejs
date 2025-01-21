@@ -1,0 +1,26 @@
+<% layout('boilerplate') -%>
+<div class="container my-5">
+    <!-- User Name -->
+    <div class="text-center mb-4">
+      <h1 class="fw-bold"><%=data.name%></h1>
+    </div>
+
+    <!-- Social Media Handle -->
+    <div class="text-center mb-5">
+      <p class="fs-5"><strong>SocialMedia:</strong> <a href="<%=data.socialMedia%>" class="text-decoration-none"><%=data.socialMedia%></a></p>
+    </div>
+
+    <!-- User Images -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+<%for(let i=0;i<data.images.length;i++){%>
+    <div class="col">
+        <div class="card h-100">
+          <img src=<%=data.images[i]%> class="card-img-top" alt="Image 1">
+        </div>
+      </div>
+<%}%>
+      
+      
+      
+    </div>
+  </div>
