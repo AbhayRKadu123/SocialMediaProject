@@ -3,7 +3,7 @@ const app=express();
 const Router=express.Router();
 let admin=require('./Routes/admin')
 let user=require('./Routes/User')
-
+const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
 const passport=require('passport')
 const LocalStrategy = require('passport-local').Strategy;
@@ -17,10 +17,16 @@ var session = require('express-session')
 engine = require('ejs-mate'),
 app.engine('ejs', engine);
 app.set('view engine', 'ejs'); 
+
 app.use(session({
     secret:  process.env.secret,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.mongourl, // MongoDB connection string from .env
+        collectionName: 'sessions', // Optional: Customize the collection name
+        ttl: 24 * 60 * 60 // Optional: Session expiration time (24 hours)
+      }),
     cookie: { secure:false ,
         maxAge: 24 * 60 * 60 * 1000
     }
